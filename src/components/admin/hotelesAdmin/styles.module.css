@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+.poppins {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* styles.css */
+.no_margin {
+    margin: 0;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+}
+
+.image {
+    width: 10%;   /* La imagen ocupará el 100% del contenedor */
+    height: auto;  /* Mantendrá la proporción original */
+    object-fit: cover; /* Opcional: si quieres que la imagen cubra el contenedor sin distorsionarse */
+}
+
+
+.formContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap:10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.divContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.inputContainer{
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.label {
+    margin-left: 9px;
+    font-weight: bolder;
+}
+
+.button {
+
+    margin-top: 12px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    width: 200px;
+    /* Mismo ancho que los inputs */
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.inputStyle {
+ 
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 10px;
+    width: 200px;
+    /* Ajustá según gusto */
+    box-sizing: border-box;
+    font-size: 1rem;
+
+}
+
+
+.cargando {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20%;
+    font-size: 24px;
+    font-weight: bolder;
+    font-family: 'Poppins', sans-serif;
+}

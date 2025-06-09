@@ -1,9 +1,12 @@
-import Register from "@/components/register/register"
+ "use client"; 
 
-export default function RegisterPage(){
-    return(
+import dynamic from 'next/dynamic';
+
+const Register = dynamic(() => import('@/components/register/register'), { ssr: false });
+export default function RegisterPage() {
+    return (
         <>
-            <Register/>
+            <Register />
         </>
     )
 }

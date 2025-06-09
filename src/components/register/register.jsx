@@ -1,11 +1,13 @@
 "use client";  // Añadir esta línea al principio del archiv
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import RegisterForm from "./registerForm";
+import Loading from "./loading";
 
 export default function Register() {
     const router = useRouter();
 
+    const [loading, setLoading] = useState(true)
     const [dataUser, setDataUser] = useState({
         first_name: "",
         last_name: "",
@@ -13,6 +15,11 @@ export default function Register() {
         email: "",
         password: "",
     });
+
+    // 👇 Esto se ejecuta cuando el componente se monta
+    useEffect(() => {
+        setLoading(false);
+    }, []);
 
     const registerUser = async () => {
         try {
@@ -38,17 +45,21 @@ export default function Register() {
                 router.push("/login");
             } else {
                 alert("Error al registrar el usuario");
-          
+
             }
         } catch (error) {
             alert("Hubo un error con la solicitud: " + error.message);
-        }
+        } 
+
     };
 
+    if (loading) {
+        return <Loading />
+    }
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
-
+        setLoading(true); // 👈 activás loading antes del fetch
         // Aquí invocamos la función registerUser para enviar los datos
         registerUser();
 
@@ -70,13 +81,13 @@ export default function Register() {
     };
 
     return (
-       <>
-        <h3>Crear Cuenta</h3>
-        <RegisterForm
-            handleOnSubmit={handleOnSubmit}
-         handleOnChange={handleOnChange}
-         dataUser={dataUser}
-        />
-       </>
+        <>
+
+            <RegisterForm
+                handleOnSubmit={handleOnSubmit}
+                handleOnChange={handleOnChange}
+                dataUser={dataUser}
+            />
+        </>
     );
 }

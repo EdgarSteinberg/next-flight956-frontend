@@ -1,4 +1,14 @@
-.card {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+.poppins{
+  font-family: 'Poppins', sans-serif;
+}
+/* styles.css */
+.no_margin {
+  margin: 0;
+}
+ 
+.home {
     width: 300px;
     background-color: gray; /* Fondo gris */
     padding: 1rem; /* Espaciado interno de 1rem */
@@ -7,4 +17,14 @@
     font-size: 1.25rem; /* Tamaño de fuente grande */
     font-weight: bold; /* Negrita */
     color: #f5f1f1; /* Color del texto (gris oscuro) */
+}
+
+.cargando {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20%;
+    font-size: 24px;
+    font-weight: bolder;
+    font-family: 'Poppins', sans-serif;
 }

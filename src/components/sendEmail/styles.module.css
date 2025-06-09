@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+.poppins {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* styles.css */
+.no_margin {
+    margin: 0;
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.formContainer {
+    max-width: 500px;
+    /* Mejor que 50%, más control */
+    margin: 2rem auto;
+    /* Espaciado vertical y centrado */
+    padding: 1.5rem 2rem;
+    /* Padding cómodo */
+    border: 1px solid #ccc;
+    /* Borde suave y profesional */
+    border-radius: 12px;
+    /* Curvas más suaves */
+    background-color: #f9f9f9;
+    /* Fondo claro para mejor contraste */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra sutil */
+    cursor: default;
+    /* Cursor por defecto para formularios */
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.divContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.2rem;
+    /* Separación entre inputs */
+    width: 100%;
+}
+
+.labelContainer {
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: #333;
+    text-align: left;
+    user-select: none;
+    /* No permite seleccionar texto accidentalmente */
+}
+
+.inputContainer {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1.5px solid #bbb;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.inputContainer:focus {
+    outline: none;
+    border-color: rgb(38, 38, 153);
+    box-shadow: 0 0 6px rgba(38, 38, 153, 0.5);
+    background-color: #fff;
+}
+
+.button {
+    width: 100%;
+    background-color: rgb(38, 38, 153);
+    color: white;
+    font-weight: 700;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 3px 6px rgba(38, 38, 153, 0.4);
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.button:hover {
+    background-color: rgb(25, 25, 102);
+}
+
+.button:active {
+    background-color: rgb(20, 20, 80);
+}
+
+
+
+.cargando {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20%;
+    font-size: 24px;
+    font-weight: bolder;
+    font-family: 'Poppins', sans-serif;
+}

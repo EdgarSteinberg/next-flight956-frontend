@@ -1,15 +1,11 @@
-//import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 
-/* const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-}); */
+import Navbar from "@/components/navBar/navBar";
+import ReservaProvider from "@/context/reservaContenxt";
+import 'antd/dist/reset.css'; // Versión moderna (Next.js recomienda reset.css)
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+//import "./globals.css";
+ 
 
 export const metadata = {
   title: "Create Next App",
@@ -22,7 +18,11 @@ export default function RootLayout({ children }) {
       <body
       /*  className={`${geistSans.variable} ${geistMono.variable} antialiased`}*/
       >
+        <ReservaProvider>
+        <Navbar/>
         {children}
+        </ReservaProvider>
+        <ToastContainer />
       </body>
     </html>
   );

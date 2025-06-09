@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+.poppins {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* styles.css */
+.no_margin {
+    margin: 0;
+}
+
+.autocompleteWrapper {
+    background-image:
+        linear-gradient(180deg, rgba(66, 133, 244, 0) 0%, var(--tc-link, #4285f4) 81.07%),
+        linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%),
+        url('/img/playa.webp');
+    background-repeat: no-repeat;
+    background-size:
+        cover,
+        /* para el primer gradiente */
+        cover,
+        /* para el segundo gradiente */
+        cover;
+    /* para la imagen de fondo */
+    background-position:
+        center,
+        /* gradiente superior */
+        center,
+        /* gradiente inferior */
+        center;
+    /* imagen de fondo */
+
+    padding: 2rem;
+    border-radius: 12px;
+    color: white;
+}
+
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 10;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.dropdown li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.dropdown li:hover {
+    background-color: #f0f0f0;
+}
+
+.formStyle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4%;
+    color: black;
+    flex-wrap: wrap;
+}
+
+.inputStyle {
+    margin: 7px;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 10px;
+    width: 200px;
+    /* Ajustá según gusto */
+    box-sizing: border-box;
+    font-size: 1rem;
+
+}
+
+.buttonSubmit {
+    margin: 7px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    width: 200px;
+    /* Mismo ancho que los inputs */
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buttonSubmit:hover {
+    background-color: aqua;
+    color: black;
+}
+
+
+.carousel_slide {
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.slick_prev,
+.slick_next {
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white !important;
+    border-radius: 50%;
+}
+
+.slick_prev::before,
+.slick_next::before {
+    font-size: 20px;
+    color: white;
+    line-height: 40px;
+}
+
+.slick_prev {
+    left: -20px;
+}
+
+.slick_next {
+    right: -20px;
+}
+
+
+
+/*Paquete vista lista*/
+
+.titulo {
+    font-weight: 500;
+    color: #323439;
+    font-size: 32px;
+    font-family: inherit;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+
+.cargando {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20%;
+    font-size: 24px;
+    font-weight: bolder;
+    font-family: 'Poppins', sans-serif;
+}
+
+@media screen and (max-width: 520px) {
+
+    /* .formStyle {
+        padding: 0%;
+    } */
+
+    /* 
+    .formWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0%;
+        width: 100%;
+    } */
+    .formWrapper {
+        display: flex;
+
+        /* Esto centra horizontalmente */
+        justify-content: center;
+        /* Esto centra verticalmente si quieres */
+        padding: 0%;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .titulo {
+        font-size: 24px;
+    }
+
+    .autocompleteWrapper {
+        padding: 0%;
+
+    }
+}
