@@ -10,9 +10,20 @@ export default function Navbar() {
     const router = useRouter();
     const { reservas } = useContext(ReservaContext);
 
-    const handleChange = (e) => {
-        const value = e.target.value;
-        if (value) router.push(value);
+    // const handleChange = (e) => {
+    //     const value = e.target.value;
+    //     if (value) router.push(value);
+    // };
+
+    const handleChange = (event) => {
+        const selectedValue = event.target.value;
+
+        if (selectedValue === "docs") {
+            window.open("http://localhost:8080/api/docs/#/", "_blank");
+        } else if (selectedValue) {
+            // Redireccionar a la página seleccionada
+           router.push(selectedValue)
+        }
     };
 
     const handleLogout = async () => {
@@ -74,6 +85,7 @@ export default function Navbar() {
                     <option value="/admin/paquetes">PaquetesAdmin</option>
                     <option value="/admin/users">UsersAdmin</option>
                     <option value="/admin/docs"  >Premium</option>
+                    <option value="docs">Swagger</option>
 
                 </select>
             </div>
