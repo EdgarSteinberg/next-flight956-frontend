@@ -22,7 +22,7 @@ export default function VuelosPorProvincia() {
 
     useEffect(() => {
         if (!nombreProvincia) return;
-        fetch(`http://localhost:8080/api/vuelos/buscarProvincia?nombreProvincia=${nombreProvincia}`)
+        fetch(`https://node-flight956-backend.onrender.com/api/vuelos/buscarProvincia?nombreProvincia=${nombreProvincia}`)
             .then(response => response.json())
             .then(json => {
                 setVuelos(json.payload);
@@ -32,7 +32,7 @@ export default function VuelosPorProvincia() {
 
     useEffect(() => {
         // Traé las provincias acá si no las tenés hardcodeadas
-        fetch(`http://localhost:8080/api/provincias`)
+        fetch(`https://node-flight956-backend.onrender.com/api/provincias`)
             .then(res => res.json())
             .then(json => setProvincias(json.payload))
             .catch(error => console.error('Error al cargar provincias', error))

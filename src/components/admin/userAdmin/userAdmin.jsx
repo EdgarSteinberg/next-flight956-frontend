@@ -25,7 +25,7 @@ export default function UserAdmin() {
     const handleDelete = async (userId) => {
 
         try {
-            const response = await fetch(`http://localhost:8080/api/users/${userId}`, {
+            const response = await fetch(`https://node-flight956-backend.onrender.com/api/users/${userId}`, {
                 method: 'DELETE',
                 credentials: 'include'
             });
@@ -53,7 +53,7 @@ export default function UserAdmin() {
     const handlePremium = async (userId) => {
 
         try {
-            const response = await fetch(`http://localhost:8080/api/users/premium/${userId}`, {
+            const response = await fetch(`https://node-flight956-backend.onrender.com/api/users/premium/${userId}`, {
                 method: 'PUT',
                 credentials: 'include'
             })
@@ -82,7 +82,7 @@ export default function UserAdmin() {
 
     const handleUsersDelete = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/api/users/`,
+            const response = await fetch(`https://node-flight956-backend.onrender.com/api/users/`,
                 {
                     method: 'DELETE',
                     credentials: 'include'

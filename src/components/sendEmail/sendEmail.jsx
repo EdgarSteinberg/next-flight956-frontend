@@ -10,7 +10,7 @@ export default function SendEmail() {
         e.preventDefault();
 
         try {
-            const response = await fetch(`http://localhost:8080/api/users/sendEmail`, {
+            const response = await fetch(`https://node-flight956-backend.onrender.com/api/users/sendEmail`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

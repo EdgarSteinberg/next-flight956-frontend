@@ -15,7 +15,7 @@ export default function PaquetesPorProvincia({ nombreProvincia }) {
 
     useEffect(() => {
 
-        fetch(`http://localhost:8080/api/paquetes?buscarPorProvincia=${nombreProvincia}`)
+        fetch(`https://node-flight956-backend.onrender.com/api/paquetes?buscarPorProvincia=${nombreProvincia}`)
             .then(response => response.json())
             .then(json => {
                 console.log("Paquetes relacionados:", json.payload);
@@ -45,7 +45,7 @@ export default function PaquetesPorProvincia({ nombreProvincia }) {
                                 p.destino.image?.length > 0 ? (
                                     <div style={{ position: 'relative', height: '200px' }}>
                                         <Image
-                                            src={`http://localhost:8080/image/provincias/${p.destino.image[0]}`}
+                                            src={`https://node-flight956-backend.onrender.com/image/provincias/${p.destino.image[0]}`}
                                             alt={`Imagen de ${p.destino.name}`}
                                             fill
                                             style={{ objectFit: 'cover', borderTopLeftRadius: '8px', borderTopRightRadius: '8px' }}

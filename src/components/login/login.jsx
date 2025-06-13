@@ -22,7 +22,7 @@ export default function Login() {
 
     const loginUser = async () => {
         try {
-            const response = await fetch("http://localhost:8080/api/users/login", {
+            const response = await fetch("https://node-flight956-backend.onrender.com/api/users/login", {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -41,7 +41,7 @@ export default function Login() {
             const data = await response.json(); // Aquí está correctamente la respuesta de `response`
 
             if (data.status === "success") {
-                // alert("Usuario logeado correctamente");
+              alert("Usuario logeado correctamente");
 
                 // 🔥 Ahora sí: traer el usuario actual desde la cookie
                 const currentUser = await getCurrentUser();

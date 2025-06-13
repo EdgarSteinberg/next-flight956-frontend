@@ -16,7 +16,7 @@ export default function Cart() {
 
         setLoading(true); // Asegurate de setearlo al volver a cargar
 
-        fetch(`http://localhost:8080/api/carts/${user.cart}`)
+        fetch(`https://node-flight956-backend.onrender.com/api/carts/${user.cart}`)
             .then(res => res.json())
             .then(json => {
                 setCart(json.payload);
@@ -31,7 +31,7 @@ export default function Cart() {
     const handleDeleteProductInCart = async ({ productoId, referencia }) => {
         try {
             const response = await fetch(
-                `http://localhost:8080/api/carts/${user.cart}/products/${productoId}?referencia=${referencia}`,
+                `https://node-flight956-backend.onrender.com/api/carts/${user.cart}/products/${productoId}?referencia=${referencia}`,
                 { method: 'DELETE' }
             );
 
@@ -66,7 +66,7 @@ export default function Cart() {
     const handleClearCart = async (cartId) => {
         try {
             const response = await fetch(
-                `http://localhost:8080/api/carts/${cartId}/products/`,
+                `https://node-flight956-backend.onrender.com/api/carts/${cartId}/products/`,
                 { method: 'DELETE' }
             );
 

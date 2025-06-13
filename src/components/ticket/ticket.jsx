@@ -41,7 +41,7 @@ export default function Ticket() {
         const userId = user._id;
         console.log('userID', userId, 'CartId', cartId)
         try {
-            const response = await fetch(`http://localhost:8080/api/ticket`, {
+            const response = await fetch(`https://node-flight956-backend.onrender.com/api/ticket`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

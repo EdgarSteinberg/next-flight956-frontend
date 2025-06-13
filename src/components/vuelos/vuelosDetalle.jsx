@@ -23,7 +23,7 @@ export default function VuelosDetalle() {
     useEffect(() => {
         if (!id) return;
 
-        fetch(`http://localhost:8080/api/vuelos/${id}`)
+        fetch(`https://node-flight956-backend.onrender.com/api/vuelos/${id}`)
             .then(response => response.json())
             .then(json => {
                 setVuelo(json.payload)

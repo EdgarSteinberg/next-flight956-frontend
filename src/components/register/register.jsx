@@ -23,7 +23,7 @@ export default function Register() {
 
     const registerUser = async () => {
         try {
-            const response = await fetch("http://localhost:8080/api/users/register", {
+            const response = await fetch("https://node-flight956-backend.onrender.com/api/users/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json", // Asegurándonos de que estamos enviando JSON

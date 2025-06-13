@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 
-const BASE_URL = 'http://localhost:8080/api';
+const BASE_URL = 'https://node-flight956-backend.onrender.com/api';
 
 export const getAll = async (endpoint) => {
   const res = await fetch(`${BASE_URL}/${endpoint}`);
@@ -122,28 +122,11 @@ export const agregarAlCarrito = async (endpoint, carritoId, reservas) => {
   }
 };
 
-
-//Peticion usuario por ID
-// export const getCurrentUser = async () => {
-//   try {
-//     const response = await axios.get(`${BASE_URL}/users/current`, {
-//       withCredentials: true,
-//     });
-//      response.data.user;
-//   } catch (error) {
-//     // Si da 401 (Unauthorized), simplemente devolvés null o un objeto anónimo
-//     if (error.response && error.response.status === 401) {
-//       console.log('Usuario no logueado, se mantiene como anónimo');
-//       return null;
-//     }
-//     // Si es otro error, lanzalo
-//     throw error;
-//   }
-// };
+ 
 
 export async function getCurrentUser() {
   try {
-    const response = await fetch('http://localhost:8080/api/users/current', {
+    const response = await fetch('https://node-flight956-backend.onrender.com/api/users/current', {
       method: 'GET',
       credentials: 'include',
     });

@@ -31,7 +31,7 @@ export default function PaquetesList({ paquetes }) {
                                 p.destino.image?.length > 0 ? (
                                     <div style={{ position: 'relative', height: '200px' }}>
                                         <Image
-                                            src={`http://localhost:8080/image/provincias/${p.destino.image[0]}`}
+                                            src={`https://node-flight956-backend.onrender.com/image/provincias/${p.destino.image[0]}`}
                                             alt={`Imagen de ${p.destino.name}`}
                                             fill
                                             style={{ objectFit: 'cover', borderRadius: '9px' }}

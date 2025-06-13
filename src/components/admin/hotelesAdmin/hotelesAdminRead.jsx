@@ -51,7 +51,7 @@ export default function HotelRead({ hoteles, setHoteles }) {
                                 <div style={{ width: '100%', height: 200, overflow: 'hidden', position: 'relative' }}>
                                   {ciu.image && ciu.image.length > 0 ? (
                                     <Image
-                                      src={`http://localhost:8080/image/hoteles/${ciu.image[0]}`}
+                                      src={`https://node-flight956-backend.onrender.com/image/hoteles/${ciu.image[0]}`}
                                       alt={`Imagen de ${ciu.name}`}
                                       fill
                                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"

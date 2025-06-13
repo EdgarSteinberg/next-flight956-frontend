@@ -40,7 +40,7 @@ export default function VuelosList() {
                 v.destino.image?.length > 0 ? (
                   <div style={{ position: 'relative', height: '200px' }}>
                     <Image
-                      src={`http://localhost:8080/image/provincias/${v.destino.image[0]}`}
+                      src={`https://node-flight956-backend.onrender.com/image/provincias/${v.destino.image[0]}`}
                       alt={`Imagen de ${v.name}`}
                       fill
                       style={{ objectFit: 'cover', borderTopLeftRadius: '8px', borderTopRightRadius: '8px' }}

@@ -37,7 +37,7 @@ export default function DocsAdmin() {
     formData.append("docs", form.docs_dos);
 
     try {
-      const response = await fetch(`http://localhost:8080/api/users/documents/${userId}`, {
+      const response = await fetch(`https://node-flight956-backend.onrender.com/api/users/documents/${userId}`, {
         method: 'POST',
         body: formData,
         credentials: 'include'

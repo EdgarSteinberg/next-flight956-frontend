@@ -19,7 +19,7 @@ export default function Navbar() {
         const selectedValue = event.target.value;
 
         if (selectedValue === "docs") {
-            window.open("http://localhost:8080/api/docs/#/", "_blank");
+            window.open("https://node-flight956-backend.onrender.com/api/docs/#/", "_blank");
         } else if (selectedValue) {
             // Redireccionar a la página seleccionada
            router.push(selectedValue)
@@ -28,7 +28,7 @@ export default function Navbar() {
 
     const handleLogout = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/users/logout', {
+            const response = await fetch('https://node-flight956-backend.onrender.com/api/users/logout', {
                 method: 'POST',
                 credentials: 'include'
             });

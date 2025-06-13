@@ -24,7 +24,7 @@ export default function PaqueteDetalle() {
     useEffect(() => {
         if (!id) return;
 
-        fetch(`http://localhost:8080/api/paquetes/${id}`)
+        fetch(`https://node-flight956-backend.onrender.com/api/paquetes/${id}`)
             .then(response => response.json())
             .then(json => {
                 console.log(json.payload);
@@ -44,7 +44,7 @@ export default function PaqueteDetalle() {
         const cartId = user.cart;
         console.log(cartId)
         try {
-            const response = await fetch(`http://localhost:8080/api/carts/${cartId}/products/${reserva.productoId}`, {
+            const response = await fetch(`https://node-flight956-backend.onrender.com/api/carts/${cartId}/products/${reserva.productoId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -108,7 +108,7 @@ export default function PaqueteDetalle() {
                     <div style={{ height: '230px', position: 'relative', width: '100%' }}>
                         {paquete.destino?.image?.length > 0 ? (
                             <Image
-                                src={`http://localhost:8080/image/provincias/${paquete.destino.image[0]}`}
+                                src={`https://node-flight956-backend.onrender.com/image/provincias/${paquete.destino.image[0]}`}
                                 alt={`Imagen de ${paquete.destino.name}`}
                                 style={{ objectFit: 'cover', borderRadius: '12px 0' }}
                                 fill
@@ -296,7 +296,7 @@ export default function PaqueteDetalle() {
 
                                     <div style={{ height: '230px', position: 'relative', width: '100%', flex: '1' }}>
                                         <Image
-                                            src={`http://localhost:8080/image/hoteles/${paquete.hotel.image[0]}`}
+                                            src={`https://node-flight956-backend.onrender.com/image/hoteles/${paquete.hotel.image[0]}`}
                                             alt={paquete.destino.name}
                                             style={{ objectFit: 'cover', borderRadius: '12px 0' }}
                                             fill

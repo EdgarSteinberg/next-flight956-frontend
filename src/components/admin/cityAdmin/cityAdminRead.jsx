@@ -51,7 +51,7 @@ export default function CityRead({ ciudad, setCiudad, error, setError }) {
                 ciu.image ? (
                   <div style={{ position: 'relative', width: '100%', height: '200px' }}>
                     <Image
-                      src={`http://localhost:8080/image/provincias/${ciu.image}`}
+                      src={`https://node-flight956-backend.onrender.com/image/provincias/${ciu.image}`}
                       alt={ciu.name}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"

@@ -47,7 +47,7 @@ export default function Vuelos({ destinoFijo = null, soloFormulario }) {
     }
 
     try {
-      const url = `http://localhost:8080/api/vuelos/buscar?origen=${origenSeleccionado._id}&destino=${destino._id}&vuelo_ida=${fechaIda}&vuelo_vuelta=${fechaVuelta}`;
+      const url = `https://node-flight956-backend.onrender.com/api/vuelos/buscar?origen=${origenSeleccionado._id}&destino=${destino._id}&vuelo_ida=${fechaIda}&vuelo_vuelta=${fechaVuelta}`;
 
       const response = await fetch(url);
       if (!response.ok) throw new Error("Error en la búsqueda");

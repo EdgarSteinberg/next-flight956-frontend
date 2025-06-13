@@ -8,7 +8,7 @@ export default function TicketId({ id }) {
 
     useEffect(() => {
 
-        fetch(`http://localhost:8080/api/ticket/${id}`)
+        fetch(`https://node-flight956-backend.onrender.com/api/ticket/${id}`)
             .then((response) => response.json())
             .then((json) => {
                 console.log(json.payload);

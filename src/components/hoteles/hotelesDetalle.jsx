@@ -50,7 +50,7 @@ export default function HotelesDetalle() {
     useEffect(() => {
         if (!id) return;
 
-        fetch(`http://localhost:8080/api/hoteles/${id}`)
+        fetch(`https://node-flight956-backend.onrender.com/api/hoteles/${id}`)
             .then(response => response.json())
             .then(json => {
                 console.log(json.payload)
@@ -115,7 +115,7 @@ export default function HotelesDetalle() {
                                 <div style={{ flex: '1', position: 'relative', overflow: 'hidden' }} >
                                     {hotel.image && hotel.image.length > 0 ? (
                                         <Image
-                                            src={`http://localhost:8080/image/hoteles/${hotel.image[0]}`}
+                                            src={`https://node-flight956-backend.onrender.com/image/hoteles/${hotel.image[0]}`}
                                             alt={`Imagen de ${hotel.name}`}
                                             style={{ objectFit: 'cover', borderRadius: '9px' }}
                                             priority

@@ -53,7 +53,7 @@ export default function PaqueteRead({ paquetes, setPaquetes }) {
                                 paq.destino && paq.destino.image && paq.destino.image.length > 0 ? (
                                     <div style={{position: 'relative', width: '100%', height:'200px'}}>
                                         <Image
-                                            src={`http://localhost:8080/image/provincias/${paq.destino.image[0]}`}
+                                            src={`https://node-flight956-backend.onrender.com/image/provincias/${paq.destino.image[0]}`}
                                             alt={paq.destino.name || 'Imagen de Provincia'}
                                             fill
                                             sizes="(max-width: 768px) 100vw, (max-width:1200px) 50vw, 25vw"

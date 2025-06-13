@@ -65,7 +65,7 @@ export default function ReservaProvider({ children }) {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:8080/api/users`)
+        fetch(`https://node-flight956-backend.onrender.com/api/users`)
     }, [])
 
     return (
