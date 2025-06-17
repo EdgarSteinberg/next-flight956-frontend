@@ -113,13 +113,13 @@ export default function Cart() {
     return (
         <div style={{ margin: '0 auto', padding: '20px' }} className={styles.poppins}>
 
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }} className={styles.labelContainer}>
                 <p style={{ textAlign: 'center', fontSize: '24px' }} className={styles.no_margin}>Tu carrito</p>
                 <button onClick={() => handleClearCart(cart._id)} style={{ background: 'red', padding: '9px', borderRadius: '12px', color: 'white', cursor: 'pointer' }}>Vaciar Carrito</button>
-                <button onClick={handleRedirect}  style={{ background: 'green', padding: '9px', borderRadius: '12px', color: 'white', cursor: 'pointer' }}>Procesar Compra</button>
+                <button onClick={handleRedirect} style={{ background: 'green', padding: '9px', borderRadius: '12px', color: 'white', cursor: 'pointer' }}>Procesar Compra</button>
             </div>
             {!cart || cart.productos.length === 0 ? (
-                <p>El carrito está vacío</p>
+                <p className={styles.title}>El carrito está vacío</p>
             ) : (
                 cart.productos.map((item) => {
 
@@ -128,9 +128,9 @@ export default function Cart() {
                     const hotel = item.productoHotel ? { ...item.productoHotel, quantity: item.quantity } : null;
 
                     return (
-                        <div key={item._id} style={{ border: '1px solid gray', marginBottom: '1rem', padding: '1rem' }}>
+                        <div key={item._id} className={styles.formContainer}>
                             {paquete && (
-                                <>
+                                <div className={styles.labelContainer}>
                                     <h3 style={{ fontWeight: 'bold' }}>✈️ Paquete: {paquete.destino.name}</h3>
                                     <p>🛫 Vuelo: {paquete.vuelo.empresa}</p>
                                     <p>Desde: {paquete.vuelo.origen.name} → Hasta: {paquete.vuelo.destino.name}</p>
@@ -145,11 +145,11 @@ export default function Cart() {
                                     }} style={{ background: 'red', padding: '9px', borderRadius: '12px', color: 'white', cursor: 'pointer' }}>
                                         Eliminar
                                     </button>
-                                </>
+                                </div>
                             )}
 
                             {vuelo && (
-                                <>
+                                <div className={styles.labelContainer}>
                                     <h3 style={{ fontWeight: 'bold' }}>✈️ Vuelo: {vuelo.empresa}</h3>
                                     <p>Desde: {vuelo.origen.name} → Hasta: {vuelo.destino.name}</p>
                                     <p>🕓 Duración: {vuelo.duracion}</p>
@@ -166,11 +166,11 @@ export default function Cart() {
                                     }} style={{ background: 'red', padding: '9px', borderRadius: '12px', color: 'white', cursor: 'pointer' }}>
                                         Eliminar
                                     </button>
-                                </>
+                                </div>
                             )}
 
                             {hotel && (
-                                <>
+                                <div className={styles.labelContainer}>
                                     <h3 style={{ fontWeight: 'bold' }}>🏨 Hotel: {hotel.name}</h3>
                                     <p>{hotel.description}</p>
                                     <p>💰 Precio: ${hotel.price}</p>
@@ -182,7 +182,7 @@ export default function Cart() {
                                     }} style={{ background: 'red', padding: '9px', borderRadius: '12px', color: 'white', cursor: 'pointer' }}>
                                         Eliminar
                                     </button>
-                                </>
+                                </div>
                             )}
 
 

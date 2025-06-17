@@ -140,3 +140,13 @@
     font-weight: bolder;
     font-family: 'Poppins', sans-serif;
 }
+
+.userData {
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #2c3e50;
+    font-family: 'Poppins', sans-serif;
+
+}

@@ -9,7 +9,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useRouter } from "next/navigation";
 import style from './styles.module.css';
 import Loading from "./loading";
- 
+
 
 export default function PaqueteDetalle() {
     const { agregarReserva, user } = useContext(ReservaContext);
@@ -27,7 +27,6 @@ export default function PaqueteDetalle() {
         fetch(`https://node-flight956-backend.onrender.com/api/paquetes/${id}`)
             .then(response => response.json())
             .then(json => {
-                console.log(json.payload);
                 setPaquete(json.payload);
             })
             .catch(error => setError(error))

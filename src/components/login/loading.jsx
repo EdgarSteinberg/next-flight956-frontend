@@ -4,7 +4,7 @@ export default function Loding(){
 
     return(
         <>
-            <p className={styles.cargando}>...Cargando</p>
+            <p className={styles.cargando}>Cargando...</p>
         </>
     )
 }

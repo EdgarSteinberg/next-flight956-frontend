@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Loading from "./loading";
+import { useRouter } from "next/navigation";
+import { ReservaContext } from "@/context/reservaContenxt";
 
 export default function TicketId({ id }) {
     const [ticketId, setTicketId] = useState({});
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [mostrar, setMostrar] = useState(false)
+    const { user } = useContext(ReservaContext);
+    const router = useRouter();
 
     useEffect(() => {
 
@@ -13,6 +18,7 @@ export default function TicketId({ id }) {
             .then((json) => {
                 console.log(json.payload);
                 setTicketId(json.payload);
+                setMostrar(true)
             })
             .catch((error) => setError(error))
             .finally(() => setLoading(false));
@@ -24,6 +30,7 @@ export default function TicketId({ id }) {
 
     return (
         <>
+
             <p>Ticket ID: {ticketId?._id}</p>
             <p>Cart: {ticketId?.cart}</p>
             <p>Fecha: {new Date(ticketId?.fecha).toDateString()}</p>
@@ -38,6 +45,7 @@ export default function TicketId({ id }) {
                     <hr />
                 </div>
             ))}
+
         </>
     );
 }

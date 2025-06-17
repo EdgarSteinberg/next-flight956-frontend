@@ -3,8 +3,10 @@
 import { useContext, useState } from "react";
 import { ReservaContext } from "@/context/reservaContenxt";
 import { useRouter } from "next/navigation";
-import styles from './syles.module.css';
 import TicketForm from "./ticketForm";
+import styles from './syles.module.css';
+import TicketId from "./ticketId";
+import TicketTarjeta from "./ticketTarjeta";
 
 export default function Ticket() {
     const { user } = useContext(ReservaContext);
@@ -17,6 +19,7 @@ export default function Ticket() {
         number_doc: '',
         email: ''
     });
+    const [ticketDetalle, setTicketDetalle] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -25,7 +28,7 @@ export default function Ticket() {
             [name]: value
         }));
     };
- 
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -37,9 +40,10 @@ export default function Ticket() {
 
         console.log('nuevo formulario', form);
 
-        const cartId = user.cart ;
+        const cartId = user.cart;
         const userId = user._id;
-        console.log('userID', userId, 'CartId', cartId)
+
+        console.log('userID', userId, 'CartId', cartId, 'user', user.ticket)
         try {
             const response = await fetch(`https://node-flight956-backend.onrender.com/api/ticket`, {
                 method: 'POST',
@@ -57,6 +61,8 @@ export default function Ticket() {
             const data = await response.json();
 
             alert(`Reserva exitosa!`);
+            setTicketDetalle(data.payload); // guarda TODO el ticket
+
         } catch (error) {
             alert(`Error al generar el ticket!`)
         }
@@ -64,12 +70,24 @@ export default function Ticket() {
 
     return (
         <>
-           <TicketForm
-            handleSubmit={handleSubmit}
-            handleChange={handleChange}
-            form={form}
-          
-           />
+            <div style={{ display: 'flex' }}>
+                <div style={{ flex: '1' }}>
+                    {ticketDetalle ? (
+                        <>
+                          <TicketTarjeta ticket={ticketDetalle} />
+                        </>
+                    ) : (
+                        <>
+                            <TicketForm
+                                handleSubmit={handleSubmit}
+                                handleChange={handleChange}
+                                form={form}
+                            />
+                        </>
+                    )}
+                </div>
+
+            </div >
         </>
     );
 }

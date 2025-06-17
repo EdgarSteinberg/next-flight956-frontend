@@ -15,15 +15,14 @@ export default function ReservaProvider({ children }) {
     const router = useRouter();
     const [reservas, setReservas] = useState([]);
     const [user, setUser] = useState(null);
-
-
+   
 
     const agregarReserva = ({ id, referencia, quantity = 1 }) => {
         if (!user) {
             alert("Debes iniciar sesión para agregar reservas al carrito.");
             return; // Evita agregar la reserva si no hay usuario logueado
         }
-        
+
         setReservas(prev => [
             ...prev,
             {
@@ -47,29 +46,24 @@ export default function ReservaProvider({ children }) {
 
             if (currentUser) {
                 setUser(currentUser); // Usuario logueado
+
             } else {
                 console.log("Usuario no logueado, se mantiene como anónimo");
+
             }
         };
 
         fetchUser();
     }, []);
+ 
 
-
-    const eliminarReserva = (id) => {
-        setReservas(reservas.filter(r => r.id !== id));
-    };
-
-    const limpiarReservas = () => {
-        setReservas([]);
-    };
 
     useEffect(() => {
         fetch(`https://node-flight956-backend.onrender.com/api/users`)
     }, [])
 
     return (
-        <ReservaContext.Provider value={{ reservas, setReservas, agregarReserva, eliminarReserva, limpiarReservas, setUser, user }}>
+        <ReservaContext.Provider value={{ reservas, setReservas, agregarReserva, setUser, user  }}>
             {children}
         </ReservaContext.Provider>
     );

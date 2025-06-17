@@ -1,11 +1,11 @@
 'use client'
 import { getAll } from "@/services/api";
 import { useEffect, useState } from "react";
-import styles from './styles.module.css'
 import { useRouter } from 'next/navigation';
 import PaquetesForm from "./paquetesForm";
 import PaquetesList from "./paquetesList";
 import Loading from "./loading";
+import styles from './styles.module.css'
 
 
 export default function Paquetes() {
@@ -24,7 +24,6 @@ export default function Paquetes() {
     useEffect(() => {
         getAll('paquetes')
             .then(data => {
-                console.log('Paquetes', data);
                 setPaquetes(data);
             })
             .catch(error => setError(error))
@@ -37,37 +36,34 @@ export default function Paquetes() {
 
 
     const handlePaquete = (paq) => {
-     
         setBuscar(''); // <- limpia el filtro
         setBuscarVisible(paq.destino.name); // <- muestra en el input
         setPaqueteSeleccionado(paq.destino._id); // <- guarda el _id
-     
-
     };
 
 
     const handleSubmit = async (e) => {
-    e.preventDefault();
+        e.preventDefault();
 
-    if (!paqueteSeleccionado || !fecha_ida || !fecha_vuelta) {
-        return alert('Faltan completar datos para la búsqueda');
-    }
-    console.log(paqueteSeleccionado, fecha_ida, fecha_vuelta);
-
-    try {
-        const url = `https://node-flight956-backend.onrender.com/api/paquetes/buscar?destino=${encodeURIComponent(paqueteSeleccionado)}&desde_fecha=${encodeURIComponent(fecha_ida)}&hasta_fecha=${encodeURIComponent(fecha_vuelta)}`;
-        const response = await fetch(url);
-        const data = await response.json();
-
-        if (data.payload && data.payload.length === 1) {
-            router.push(`/paquetes/${data.payload[0]._id}`);
-        }  else {
-            alert('No se encontraron paquetes para esas fechas');
+        if (!paqueteSeleccionado || !fecha_ida || !fecha_vuelta) {
+            return alert('Faltan completar datos para la búsqueda');
         }
-    } catch (error) {
-        console.log('Error al buscar paquetes:', error);
-    }
-};
+        console.log(paqueteSeleccionado, fecha_ida, fecha_vuelta);
+
+        try {
+            const url = `https://node-flight956-backend.onrender.com/api/paquetes/buscar?destino=${encodeURIComponent(paqueteSeleccionado)}&desde_fecha=${encodeURIComponent(fecha_ida)}&hasta_fecha=${encodeURIComponent(fecha_vuelta)}`;
+            const response = await fetch(url);
+            const data = await response.json();
+
+            if (data.payload && data.payload.length === 1) {
+                router.push(`/paquetes/${data.payload[0]._id}`);
+            } else {
+                alert('No se encontraron paquetes para esas fechas');
+            }
+        } catch (error) {
+            console.log('Error al buscar paquetes:', error);
+        }
+    };
 
 
     if (loading) {
