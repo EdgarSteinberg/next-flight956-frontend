@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import RegisterForm from "./registerForm";
 import Loading from "./loading";
+import { toast } from 'react-toastify';
+
 
 export default function Register() {
     const router = useRouter();
@@ -40,7 +42,7 @@ export default function Register() {
 
             const data = await response.json(); // Aquí obtenemos el JSON de la respuesta
             if (data.status === "success") {
-                alert("Usuario registrado correctamente");
+                toast.success("Usuario registrado correctamente");
                 console.log("Payload:", data.payload); // Aquí mostramos el payload
                 router.push("/login");
             } else {

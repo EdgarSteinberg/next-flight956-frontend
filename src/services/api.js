@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { toast } from 'react-toastify';
 
 
 const BASE_URL = 'https://node-flight956-backend.onrender.com/api';
@@ -113,7 +114,7 @@ export const agregarAlCarrito = async (endpoint, carritoId, reservas) => {
       }
     }
 
-    alert('Todos los productos fueron agregados al carrito');
+    toast.success('Todos los productos fueron agregados al carrito');
    window.location.href = '/cart';
 
   } catch (error) {

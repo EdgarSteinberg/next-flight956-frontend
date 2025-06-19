@@ -1,16 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Loading from "./loading";
-import { useRouter } from "next/navigation";
-import { ReservaContext } from "@/context/reservaContenxt";
+import styles from './syles.module.css'
+
 
 export default function TicketId({ id }) {
     const [ticketId, setTicketId] = useState({});
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [mostrar, setMostrar] = useState(false)
-    const { user } = useContext(ReservaContext);
-    const router = useRouter();
-
+ 
     useEffect(() => {
 
         fetch(`https://node-flight956-backend.onrender.com/api/ticket/${id}`)
@@ -29,23 +26,24 @@ export default function TicketId({ id }) {
     }
 
     return (
-        <>
+        <div className={styles.flex}>
+            <p className={styles.title}>Ticket Codigo: {ticketId?.codigo}</p>
+            <div className={styles.formContainer}>
 
-            <p>Ticket ID: {ticketId?._id}</p>
-            <p>Cart: {ticketId?.cart}</p>
-            <p>Fecha: {new Date(ticketId?.fecha).toDateString()}</p>
+                <p className={styles.labelContainer}>Fecha: {new Date(ticketId?.fecha).toLocaleDateString('es-AR')}</p>
 
-            {ticketId?.productos?.map((producto, index) => (
-                <div key={index} style={{ marginBottom: '1rem' }}>
-                    <p>Producto: {producto.producto}</p>
-                    <p>Tipo: {producto.tipo}</p>
-                    <p>Nombre: {producto.nombre}</p>
-                    <p>Precio Unitario: {producto.precioUnitario}</p>
-                    <p>Cantidad: {producto.quantity}</p>
-                    <hr />
-                </div>
-            ))}
+                {ticketId?.productos?.map((producto, index) => (
+                    <div key={index} style={{ marginBottom: '1rem' }} className={styles.labelContainer}>
+                        <p >Producto: {producto.producto}</p>
+                        <p>Tipo: {producto.tipo}</p>
+                        <p>Nombre: {producto.nombre}</p>
+                        <p>Precio Unitario: {producto.precioUnitario}</p>
+                        <p>Cantidad: {producto.quantity}</p>
 
-        </>
+                    </div>
+                ))}
+            </div>
+        </div>
     );
+
 }

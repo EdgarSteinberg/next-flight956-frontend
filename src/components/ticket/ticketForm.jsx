@@ -1,21 +1,22 @@
 'use client';
+import { useState } from 'react';
 import styles from './syles.module.css';
 import TicketResumen from './ticketResume';
+import Loading from './loading';
 
 export default function TicketForm({ handleSubmit, handleChange, form }) {
+    const [loading, setLoading] = useState(true)
 
     return (
         <div className={styles.flex}>
 
-            <div style={{flex: '1'}}>
-                <TicketResumen />
-            </div>
+            <TicketResumen setLoading={setLoading} />
+            {loading ? (
+                <Loading />
+            ) : (
 
-            <div style={{flex: '1'}}>
-                <h3 className={styles.title}>Pasajero</h3>
 
                 <form onSubmit={handleSubmit} className={styles.formContainer}>
-
                     <div className={styles.divContainer}>
                         <label className={styles.labelContainer}>Nombre</label>
                         <input
@@ -89,8 +90,10 @@ export default function TicketForm({ handleSubmit, handleChange, form }) {
                         <button type="submit" className={styles.button}>Reservar pasaje</button>
                     </div>
                 </form>
-            </div>
+            )
+            }
+        </div >
 
-        </div>
+
     )
 }

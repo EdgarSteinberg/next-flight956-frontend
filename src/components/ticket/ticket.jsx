@@ -7,6 +7,8 @@ import TicketForm from "./ticketForm";
 import styles from './syles.module.css';
 import TicketId from "./ticketId";
 import TicketTarjeta from "./ticketTarjeta";
+import { toast } from 'react-toastify';
+
 
 export default function Ticket() {
     const { user } = useContext(ReservaContext);
@@ -60,7 +62,7 @@ export default function Ticket() {
 
             const data = await response.json();
 
-            alert(`Reserva exitosa!`);
+            toast.success(`Reserva exitosa!`);
             setTicketDetalle(data.payload); // guarda TODO el ticket
 
         } catch (error) {
@@ -70,24 +72,21 @@ export default function Ticket() {
 
     return (
         <>
-            <div style={{ display: 'flex' }}>
-                <div style={{ flex: '1' }}>
-                    {ticketDetalle ? (
-                        <>
-                          <TicketTarjeta ticket={ticketDetalle} />
-                        </>
-                    ) : (
-                        <>
-                            <TicketForm
-                                handleSubmit={handleSubmit}
-                                handleChange={handleChange}
-                                form={form}
-                            />
-                        </>
-                    )}
-                </div>
 
-            </div >
+            {ticketDetalle ? (
+                <>
+                    <TicketTarjeta ticket={ticketDetalle} />
+                </>
+            ) : (
+                <>
+                    <TicketForm
+                        handleSubmit={handleSubmit}
+                        handleChange={handleChange}
+                        form={form}
+                    />
+                </>
+            )}
+
         </>
     );
 }

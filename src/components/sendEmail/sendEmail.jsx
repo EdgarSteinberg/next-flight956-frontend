@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import SendEmailForm from "./sendEmailForm";
+import { toast } from 'react-toastify';
 
 export default function SendEmail() {
     const [email, setEmail] = useState('');
@@ -25,7 +26,7 @@ export default function SendEmail() {
             }
 
             if (data.status === "success") {
-                alert('Email enviado correctamente!');
+                toast.success('Email enviado correctamente!');
             } else {
                 alert(data.error || 'Error al enviar el email');
             }
