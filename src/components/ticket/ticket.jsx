@@ -4,10 +4,9 @@ import { useContext, useState } from "react";
 import { ReservaContext } from "@/context/reservaContenxt";
 import { useRouter } from "next/navigation";
 import TicketForm from "./ticketForm";
-import styles from './syles.module.css';
-import TicketId from "./ticketId";
-import TicketTarjeta from "./ticketTarjeta";
 import { toast } from 'react-toastify';
+import TicketTarjeta from "./ticketTarjeta";
+
 
 
 export default function Ticket() {
@@ -36,16 +35,15 @@ export default function Ticket() {
 
         if (!user) {
             console.log('user en el if:', user);  // 👈 para debuggear
-            alert(`Debes estar logeado!`);
+            toast.error(`Debes estar logeado!`);
             return router.push('/login');
         }
-
-        console.log('nuevo formulario', form);
+ 
 
         const cartId = user.cart;
         const userId = user._id;
 
-        console.log('userID', userId, 'CartId', cartId, 'user', user.ticket)
+      
         try {
             const response = await fetch(`https://node-flight956-backend.onrender.com/api/ticket`, {
                 method: 'POST',
@@ -57,7 +55,7 @@ export default function Ticket() {
             })
 
             if (!response.ok) {
-                return alert(`${data.message}`);
+                return toast.error(`${data.message}`);
             }
 
             const data = await response.json();
@@ -66,7 +64,7 @@ export default function Ticket() {
             setTicketDetalle(data.payload); // guarda TODO el ticket
 
         } catch (error) {
-            alert(`Error al generar el ticket!`)
+            toast.error(`Error al generar el ticket!`)
         }
     };
 

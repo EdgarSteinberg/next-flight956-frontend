@@ -8,6 +8,7 @@ import { DeleteOutlined } from '@ant-design/icons';
 import { ReservaContext } from "@/context/reservaContenxt";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
+import { toast } from 'react-toastify';
 
 export default function PaqueteRead({ paquetes, setPaquetes }) {
     const {user} = useContext(ReservaContext);
@@ -15,12 +16,12 @@ export default function PaqueteRead({ paquetes, setPaquetes }) {
 
     const eliminarPaquete = async (pid) => {
         if(!user){
-            alert('Debes estar logeado');
+            toast.error('Debes estar logeado');
             return router.push('/login');
         }
 
         if(user.role !== 'admin' && user.role !== 'premium'){
-            return alert('No tienes los permisos sufiencientes!')
+            return toast.error('No tienes los permisos sufiencientes!')
         }
 
         try {

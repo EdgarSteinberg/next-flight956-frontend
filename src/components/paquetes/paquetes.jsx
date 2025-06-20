@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import PaquetesForm from "./paquetesForm";
 import PaquetesList from "./paquetesList";
 import Loading from "./loading";
+import { toast } from 'react-toastify';
 import styles from './styles.module.css'
 
 
@@ -46,7 +47,7 @@ export default function Paquetes() {
         e.preventDefault();
 
         if (!paqueteSeleccionado || !fecha_ida || !fecha_vuelta) {
-            return alert('Faltan completar datos para la búsqueda');
+            return toast.error('Faltan completar datos para la búsqueda');
         }
         console.log(paqueteSeleccionado, fecha_ida, fecha_vuelta);
 
@@ -58,7 +59,7 @@ export default function Paquetes() {
             if (data.payload && data.payload.length === 1) {
                 router.push(`/paquetes/${data.payload[0]._id}`);
             } else {
-                alert('No se encontraron paquetes para esas fechas');
+                toast.error('No se encontraron paquetes para esas fechas');
             }
         } catch (error) {
             console.log('Error al buscar paquetes:', error);

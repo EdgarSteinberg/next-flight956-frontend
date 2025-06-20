@@ -13,7 +13,6 @@ export default function TicketId({ id }) {
         fetch(`https://node-flight956-backend.onrender.com/api/ticket/${id}`)
             .then((response) => response.json())
             .then((json) => {
-                console.log(json.payload);
                 setTicketId(json.payload);
                 setMostrar(true)
             })
@@ -34,7 +33,7 @@ export default function TicketId({ id }) {
 
                 {ticketId?.productos?.map((producto, index) => (
                     <div key={index} style={{ marginBottom: '1rem' }} className={styles.labelContainer}>
-                        <p >Producto: {producto.producto}</p>
+                        <p>Producto: {producto.producto}</p>
                         <p>Tipo: {producto.tipo}</p>
                         <p>Nombre: {producto.nombre}</p>
                         <p>Precio Unitario: {producto.precioUnitario}</p>

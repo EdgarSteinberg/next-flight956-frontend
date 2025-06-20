@@ -53,7 +53,7 @@ export default function Hoteles() {
         }
 
         if(user.role !== 'admin' && user.role !== 'premium'){
-            return alert('No tienes los permisos suficientes')
+            return toast.error('No tienes los permisos suficientes')
         }
 
         try {

@@ -2,14 +2,13 @@
 
 import { getAll } from "@/services/api";
 import { useEffect, useState } from "react";
-import DatePicker from 'react-datepicker';
 import Loading from "./loading"
 import 'react-datepicker/dist/react-datepicker.css';
-import { es } from 'date-fns/locale';
-import styles from './styles.module.css';
 import VuelosList from "./vuelosList";
 import VuelosForm from "./vuelosForm";
 import { useRouter } from "next/navigation";
+import { toast } from 'react-toastify';
+
 
 export default function Vuelos({ destinoFijo = null, soloFormulario }) {
   const router = useRouter();
@@ -42,7 +41,7 @@ export default function Vuelos({ destinoFijo = null, soloFormulario }) {
     const destino = destinoFijo || destinoSeleccionado;
 
     if (!origenSeleccionado || !destino || !fechaIda || !fechaVuelta) {
-      alert("Faltan completar todos los campos.");
+      toast.error("Faltan completar todos los campos.");
       return;
     }
 
@@ -54,7 +53,7 @@ export default function Vuelos({ destinoFijo = null, soloFormulario }) {
 
       const data = await response.json();
       if (!data.payload || data.payload.length === 0) {
-        alert("No se encontraron vuelos para los criterios seleccionados.");
+        toast.error("No se encontraron vuelos para los criterios seleccionados.");
 
         setMatchBusqueda(data.payload); // Estado much
 

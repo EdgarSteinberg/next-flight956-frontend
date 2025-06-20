@@ -2,6 +2,7 @@
 
 import { useContext, useState } from "react";
 import { ReservaContext } from "@/context/reservaContenxt";
+import { toast } from 'react-toastify';
 import styles from './styles.module.css';
 
 export default function DocsAdmin() {
@@ -46,18 +47,15 @@ export default function DocsAdmin() {
       const data = await response.json();
 
       if (!response.ok) {
-        alert(`${data.message}`);
+        toast.error(`${data.message}`);
       } else {
-        alert(`¡Se cargaron los documentos con éxito! 🎉`);
+        toast.success(`¡Se cargaron los documentos con éxito! 🎉`);
       }
     } catch (error) {
-      alert(`Error al cargar la documentación: ${error.message}`);
+      toast.error(`Error al cargar la documentación: ${error.message}`);
     }
   };
-
-  // if (user === null) {
-  //   return alert(`Tienes que estar logeado para enviar tu documentación`)
-  // }
+ 
   return (
     <div className={styles.container}>
       <form onSubmit={handleDocuments} encType="multipart/form-data" className={styles.form}>

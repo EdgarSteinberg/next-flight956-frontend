@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import ResetPasswordForm from './resetPasswordForm';
 import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 export default function ResetPassword() {
     const router = useRouter();
@@ -41,17 +42,17 @@ export default function ResetPassword() {
             const data = await response.json();
 
             if (!response.ok) {
-                return alert(`${data.error || 'Ocurrió un error'}`);
+                return   toast.error(`${data.error || 'Ocurrió un error'}`);
             }
 
-            alert('Contraseña restablecida con éxito');
+            toast.success('Contraseña restablecida con éxito');
 
             setPassword('');
             setPasswordRepeat('');
 
             router.push('./login')
         } catch (error) {
-            alert(`Error al enviar la nueva contraseña: ${error.message}`);
+              toast.error(`Error al enviar la nueva contraseña: ${error.message}`);
         }
     };
 

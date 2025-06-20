@@ -29,12 +29,12 @@ export default function Paquetes() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!user) {
-            alert('Debes estar logeado');
+            toast.error('Debes estar logeado');
             return router.push('/login');
         }
 
         if (user.role !== 'admin' && user.role !== 'premium') {
-            return alert('No tienes los permisos sufiencientes!')
+            return toast.error('No tienes los permisos sufiencientes!')
         }
         try {
             await create('paquetes', form); //metodo post

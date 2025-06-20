@@ -7,6 +7,7 @@ import { FaUserCircle, FaCheckCircle } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useRouter } from "next/navigation";
+import { toast } from 'react-toastify';
 import style from './styles.module.css';
 import Loading from "./loading";
 
@@ -36,7 +37,7 @@ export default function PaqueteDetalle() {
 
     const agregarAlCarrito = async (reserva) => {
 
-        if(!user){
+        if (!user) {
             return router.push(`/login`)
         }
 
@@ -57,10 +58,10 @@ export default function PaqueteDetalle() {
             const data = await response.json();
 
             if (data.status === 'success') {
-                alert('Todos los productos fueron agregados al carrito');
+                toast.success('Todos los productos fueron agregados al carrito');
                 router.push('/cart')
             } else {
-                alert(`Error al agregar el paquete: ${data.error || 'Error desconocido'}`);
+                toast.error(`Error al agregar el paquete: ${data.error || 'Error desconocido'}`);
             }
         } catch (error) {
             setError(error.message);
@@ -68,11 +69,11 @@ export default function PaqueteDetalle() {
     };
 
 
-    if (!paquete) return <Loading/>
+    if (!paquete) return <Loading />
     if (error) return <p>Error: {error}</p>;
 
-    if(loading) {
-        return <Loading/>
+    if (loading) {
+        return <Loading />
     }
 
     const formatearFecha = (fecha) => {
@@ -312,7 +313,7 @@ export default function PaqueteDetalle() {
                                             {'⭐'.repeat(paquete.hotel.stars)}
                                         </p>
 
-                                        <button style={{cursor: 'pointer', padding: '4px', width: '30%', borderRadius: '12px', fontSize: '16px', marginTop: '30%', background: '#4285F4', color: 'white' }} onClick={() => router.push(`/hoteles/${paquete.hotel._id}`)}>Ver detalle</button>
+                                        <button style={{ cursor: 'pointer', padding: '4px', width: '30%', borderRadius: '12px', fontSize: '16px', marginTop: '30%', background: '#4285F4', color: 'white' }} onClick={() => router.push(`/hoteles/${paquete.hotel._id}`)}>Ver detalle</button>
                                     </div>
                                 </div>
                             </Card>
@@ -392,7 +393,7 @@ export default function PaqueteDetalle() {
                         </div>
 
                         {/*Btn Comprar */}
-                        <button style={{ cursor: 'pointer',padding: '7px', width: '100%', borderRadius: '16px', fontSize: '16px', marginTop: '14px', background: '#4285F4', color: 'white', fontWeight: 'bold' }} onClick={() => {
+                        <button style={{ cursor: 'pointer', padding: '7px', width: '100%', borderRadius: '16px', fontSize: '16px', marginTop: '14px', background: '#4285F4', color: 'white', fontWeight: 'bold' }} onClick={() => {
                             const nuevaReserva = {
                                 productoId: paquete._id,
                                 referencia: "paquete", // este nombre es clave para que coincida con el backend

@@ -21,54 +21,52 @@ export default function TicketResumen({ setLoading }) {
     }, [user]);
 
 
-    if (!cart) return ;
+    if (!cart) return;
     return (
         <div>
             <h3 className={styles.titlex}>Resumen de tu compra</h3>
 
-            <section className={styles.formContainer}>
 
 
-                {cart.productos.map(item => {
-                    const { productoVuelo, productoHotel, productoPaquete, quantity } = item;
 
-                    if (productoPaquete) {
-                        return (
-                            <div key={item._id} className={styles.labelContainer} style={{ marginBottom: '1rem' }}>
-                                Paquete:  {productoPaquete.destino.name} ({quantity})<br />
-                                Vuelo {productoPaquete.vuelo.empresa} –{" "}
-                                {new Date(productoPaquete.vuelo.vuelo_ida).toLocaleDateString()}<br />
-                                Hotel {productoPaquete.hotel.name}<br />
-                                Total:  ${productoPaquete.hotel.price + productoPaquete.vuelo.precio}
-                            </div>
-                        );
-                    }
+            {cart.productos.map(item => {
+                const { productoVuelo, productoHotel, productoPaquete, quantity } = item;
 
-                    if (productoVuelo) {
-                        return (
-                            <div key={item._id} className={styles.labelContainer} style={{ marginBottom: '1rem' }}>
-                                Vuelo: {productoVuelo.empresa} ({quantity})<br />
-                                {productoVuelo.origen.name} → {productoVuelo.destino.name} –{" "}
-                                {new Date(productoVuelo.vuelo_ida).toLocaleDateString()}<br />
-                                Precio: ${productoVuelo.precio}
-                            </div>
-                        );
-                    }
+                if (productoPaquete) {
+                    return (
+                        <div key={item._id} className={styles.formContainer} style={{ marginBottom: '1rem' }}>
+                            Paquete:  {productoPaquete.destino.name} - Empresa: {productoPaquete.vuelo.empresa}<br />
+                            Fecha: {new Date(productoPaquete.vuelo.vuelo_ida).toLocaleDateString()} - Hotel: {productoPaquete.hotel.name}<br />
+                            Total:  ${productoPaquete.hotel.price + productoPaquete.vuelo.precio}
+                        </div>
+                    );
+                }
 
-                    if (productoHotel) {
-                        return (
-                            <div key={item._id} className={styles.labelContainer} style={{ marginBottom: '1rem' }}>
-                                Hotel:  {productoHotel.name} ({quantity})<br />
-                                {productoHotel.description}<br />
-                                Precio: ${productoHotel.price}
-                            </div>
-                        );
-                    }
+                if (productoVuelo) {
+                    return (
+                        <div key={item._id} className={styles.formContainer} style={{ marginBottom: '1rem' }}>
+                            Vuelo: {productoVuelo.empresa} <br />
+                            {productoVuelo.origen.name} → {productoVuelo.destino.name} –{" "}
+                            Fecha: {new Date(productoVuelo.vuelo_ida).toLocaleDateString()}<br />
+                            Precio: ${productoVuelo.precio}
+                        </div>
+                    );
+                }
 
-                    return null;
-                })}
+                if (productoHotel) {
+                    return (
+                        <div key={item._id} className={styles.formContainer} style={{ marginBottom: '1rem' }}>
+                            Hotel:  {productoHotel.name} ({quantity})<br />
+                            {productoHotel.description}<br />
+                            Precio: ${productoHotel.price}
+                        </div>
+                    );
+                }
 
-            </section>
+                return null;
+            })}
+
+
         </div>
     );
 }

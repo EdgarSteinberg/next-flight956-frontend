@@ -22,17 +22,17 @@ export default function SendEmail() {
             const data = await response.json(); // ¡await aquí!
 
             if (!response.ok) {
-                return alert(data.error || 'Error al enviar el email');
+                return toast.error(data.error || 'Error al enviar el email');
             }
 
             if (data.status === "success") {
                 toast.success('Email enviado correctamente!');
             } else {
-                alert(data.error || 'Error al enviar el email');
+                toast.error(data.error || 'Error al enviar el email');
             }
 
         } catch (error) {
-            alert(`Error al enviar el email: ${error.message}`);
+            toast.error(`Error al enviar el email: ${error.message}`);
         }
     };
 

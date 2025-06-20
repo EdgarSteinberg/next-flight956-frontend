@@ -43,10 +43,10 @@ export default function Register() {
             const data = await response.json(); // Aquí obtenemos el JSON de la respuesta
             if (data.status === "success") {
                 toast.success("Usuario registrado correctamente");
-                console.log("Payload:", data.payload); // Aquí mostramos el payload
+           
                 router.push("/login");
             } else {
-                alert("Error al registrar el usuario");
+                toast.error("Error al registrar el usuario");
 
             }
         } catch (error) {

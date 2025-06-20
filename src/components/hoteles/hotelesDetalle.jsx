@@ -1,18 +1,19 @@
 'use client';
 import { useParams } from "next/navigation";
-import { useContext, useEffect, useState, useMemo } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Card, Row, Col } from 'antd';
 import Image from "next/image";
-import { FaSwimmingPool, FaStar, FaWifi, FaParking, FaUtensils, FaEye, FaMapMarkerAlt } from "react-icons/fa";
+import { FaWifi, FaParking, FaUtensils, FaEye, FaMapMarkerAlt } from "react-icons/fa";
 import { ReservaContext } from "@/context/reservaContenxt";
 import { agregarAlCarrito } from "@/services/api";
 import { useRouter } from "next/navigation";
-import styles from './styles.module.css';
 import Loading from "./loading";
+import { toast } from 'react-toastify';
+import styles from './styles.module.css';
 
 export default function HotelesDetalle() {
     const router = useRouter();
-    const { agregarReserva, reservas, user, setReservas } = useContext(ReservaContext)
+    const { agregarReserva, user, setReservas } = useContext(ReservaContext)
     const { id } = useParams();
     const [loading, setLoading] = useState(true);
     const [hotel, setHotel] = useState(null);
@@ -53,7 +54,7 @@ export default function HotelesDetalle() {
         fetch(`https://node-flight956-backend.onrender.com/api/hoteles/${id}`)
             .then(response => response.json())
             .then(json => {
-                console.log(json.payload)
+ 
                 setHotel(json.payload)
             })
             .catch(error => setError(error))
@@ -69,9 +70,9 @@ export default function HotelesDetalle() {
 
     const handleReserva = async () => {
         if (!user) {
-              alert("Debes iniciar sesión para agregar reservas al carrito.");
-           return router.push('/login');
-             
+            toast.error("Debes iniciar sesión para agregar reservas al carrito.");
+            return router.push('/login');
+
         }
         agregarReserva({
             id: hotel._id,
@@ -100,12 +101,12 @@ export default function HotelesDetalle() {
         return hotel.name;
     }
 
-    if(loading){
-        return <Loading/>
+    if (loading) {
+        return <Loading />
     }
 
     return (
-        <div style={{width: '95%', margin: '0 auto'}}>
+        <div style={{ width: '95%', margin: '0 auto' }}>
             <Row gutter={[20, 20]} >
                 {hotel && (
                     <Col xs={24} md={24}>
@@ -157,4 +158,3 @@ export default function HotelesDetalle() {
     )
 }
 
- 

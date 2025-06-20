@@ -4,8 +4,8 @@ import { getAll } from "@/services/api";
 import { useEffect, useState } from "react";
 import Loading from "./loading";
 import { Card, Row, Col } from 'antd';
-import { DeleteOutlined } from '@ant-design/icons';
 import styles from './styles.module.css';
+import { toast } from 'react-toastify';
 
 export default function UserAdmin() {
     const [error, setError] = useState(null);
@@ -33,19 +33,19 @@ export default function UserAdmin() {
 
             if (!response.ok) {
                 if (response.status === 401) {
-                    return alert('No estás autenticado. Por favor, inicia sesión.');
+                    return toast.error('No estás autenticado. Por favor, inicia sesión.');
                 }
                 if (response.status === 403) {
-                    return alert('No tenés permisos suficientes para realizar esta acción.');
+                    return toast.error('No tenés permisos suficientes para realizar esta acción.');
                 }
                 return alert(`Error: ${data.message || 'Ocurrió un error inesperado.'}`);
             }
 
 
-            alert(`Usuario eliminado correctamente.`);
+            toast.success(`Usuario eliminado correctamente.`);
         }
         catch (error) {
-            alert(`Error al eliminar los usuarios ${error.message}`)
+            toast.error(`Error al eliminar los usuarios ${error.message}`)
         }
 
     }
@@ -62,20 +62,20 @@ export default function UserAdmin() {
 
             if (!response.ok) {
                 if (response.status === 401) {
-                    return alert('No estás autenticado. Por favor, inicia sesión.');
+                    return toast.error('No estás autenticado. Por favor, inicia sesión.');
                 }
                 if (response.status === 403) {
-                    return alert('No tenés permisos suficientes para realizar esta acción.');
+                    return toast.error('No tenés permisos suficientes para realizar esta acción.');
                 }
-                return alert(`Error: ${data.message || 'Ocurrió un error inesperado.'}`);
+                return toast.error(`Error: ${data.message || 'Ocurrió un error inesperado.'}`);
             }
 
 
-            alert(`Cambio de role exitoso: ${data.payload?.role || ''}`);
+            toast.success(`Cambio de role exitoso: ${data.payload?.role || ''}`);
 
 
         } catch (error) {
-            alert(`Error al actualizar el role del usuario ${error.message}`)
+            toast.error(`Error al actualizar el role del usuario ${error.message}`)
         }
     }
 
@@ -91,13 +91,13 @@ export default function UserAdmin() {
             const data = await response.json();
 
             if (!response.ok) {
-                return alert(`${data.message || ' error al eliminar los usuarios.'}`)
+                return toast.error(`${data.message || ' error al eliminar los usuarios.'}`)
             }
 
-            alert(`Usuarios eliminados ${data.status}`)
+            toast.error(`Usuarios eliminados ${data.status}`)
 
         } catch (error) {
-            alert(`Error al eliminar los usuarios ${error.message}`);
+            toast.error(`Error al eliminar los usuarios ${error.message}`);
         }
     }
 

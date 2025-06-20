@@ -5,15 +5,12 @@ import { useRouter } from 'next/navigation';
 import { ReservaContext } from '@/context/reservaContenxt';
 import { useContext } from 'react';
 import { FaShoppingCart, FaPlane, FaBed, FaSuitcaseRolling, FaUser } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 export default function Navbar() {
     const router = useRouter();
     const { reservas } = useContext(ReservaContext);
 
-    // const handleChange = (e) => {
-    //     const value = e.target.value;
-    //     if (value) router.push(value);
-    // };
 
     const handleChange = (event) => {
         const selectedValue = event.target.value;
@@ -36,13 +33,13 @@ export default function Navbar() {
             const data = await response.json();
 
             if (response.ok && data.message === 'Logout exitoso') {
-                console.log('Sesión cerrada exitosamente');
+                toast.success('Sesión cerrada exitosamente');
                 window.location.href = '/login';
             } else {
-                console.log(`Error al cerrar sesión: ${data.message || 'desconocido'}`);
+                toast.error(`Error al cerrar sesión: ${data.message || 'desconocido'}`);
             }
         } catch (error) {
-            console.log(`Error al cerrar la sesión: ${error.message}`);
+            toast.error(`Error al cerrar la sesión: ${error.message}`);
         }
     };
 

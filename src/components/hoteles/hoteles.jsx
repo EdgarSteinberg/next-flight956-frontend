@@ -1,10 +1,7 @@
 'use client'
 
-import Image from "next/image";
 import { getAll } from "@/services/api";
 import { useEffect, useState } from "react";
-import { Card, Row, Col } from 'antd';
-import styles from './styles.module.css';
 import { useRouter } from "next/navigation";
 import HotelesForm from "./hotelesForm";
 import HotelesList from "./hotelesList";

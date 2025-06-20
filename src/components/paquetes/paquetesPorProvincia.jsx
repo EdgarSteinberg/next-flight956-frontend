@@ -18,7 +18,6 @@ export default function PaquetesPorProvincia({ nombreProvincia }) {
         fetch(`https://node-flight956-backend.onrender.com/api/paquetes?buscarPorProvincia=${nombreProvincia}`)
             .then(response => response.json())
             .then(json => {
-                console.log("Paquetes relacionados:", json.payload);
                 setPaquete(json.payload);
             })
             .catch(error => setError(error));

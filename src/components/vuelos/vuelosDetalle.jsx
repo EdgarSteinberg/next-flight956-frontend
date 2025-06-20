@@ -1,19 +1,19 @@
 'use client'
 
 import { useContext, useEffect, useState } from 'react';
-import Image from "next/image";
 import { Card, Row, Col } from 'antd';
 import { useParams } from 'next/navigation';
 import { ReservaContext } from '@/context/reservaContenxt';
 import { agregarAlCarrito } from '@/services/api';
 import { useRouter } from 'next/navigation';
-import { FaCircle, FaDollarSign, FaPlane, FaUser, FaUserCircle } from 'react-icons/fa';
+import { FaPlane, FaUserCircle } from 'react-icons/fa';
 import styles from './styles.module.css';
 import Loading from './loading';
+import { toast } from 'react-toastify';
 
 export default function VuelosDetalle() {
     const router = useRouter()
-    const { agregarReserva, reservas, setReservas, user } = useContext(ReservaContext);
+    const { agregarReserva, setReservas, user } = useContext(ReservaContext);
     const { id } = useParams();
     const [vuelo, setVuelo] = useState(null);
     const [error, setError] = useState(null);
@@ -40,7 +40,7 @@ export default function VuelosDetalle() {
 
     const handleReserva = async () => {
         if (!user) {
-            alert("Debes iniciar sesión para agregar reservas al carrito.");
+            toast.error("Debes iniciar sesión para agregar reservas al carrito.");
             return router.push('/login');
         }
 
