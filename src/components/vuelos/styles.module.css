@@ -25,13 +25,19 @@
     url('/img/playa.webp');
   background-repeat: no-repeat;
   background-size:
-    cover,      /* para el primer gradiente */
-    cover,      /* para el segundo gradiente */
-    cover;      /* para la imagen de fondo */
+    cover,
+    /* para el primer gradiente */
+    cover,
+    /* para el segundo gradiente */
+    cover;
+  /* para la imagen de fondo */
   background-position:
-    center,     /* gradiente superior */
-    center,     /* gradiente inferior */
-    center;     /* imagen de fondo */
+    center,
+    /* gradiente superior */
+    center,
+    /* gradiente inferior */
+    center;
+  /* imagen de fondo */
 
   padding: 2rem;
   border-radius: 12px;
@@ -178,6 +184,16 @@
   font-family: 'Poppins', sans-serif;
 }
 
+.flex {
+  display: flex;
+}
+
+@media screen and (max-width: 800px) {
+  .flex {
+    flex-direction: column;
+  }
+}
+
 
 @media screen and (max-width: 600px) {
 
@@ -188,7 +204,7 @@
 
   .formWrapper {
     display: flex;
-  
+
     /* Esto centra horizontalmente */
     justify-content: center;
     /* Esto centra verticalmente si quieres */

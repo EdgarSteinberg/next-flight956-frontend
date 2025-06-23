@@ -90,8 +90,8 @@ export default function VuelosDetalle() {
     }
 
     return (
-        <>
-            <div style={{ display: 'flex', padding: '12px' }} className={styles.poppins}>
+        <div className={styles.poppins}>
+            <div className={styles.flex} >
                 <div style={{ flex: '1.2' }}>
                     {/* Encabezado vuelo de ida */}
                     <div style={{ margin: '35px' }}>
@@ -318,7 +318,7 @@ export default function VuelosDetalle() {
                 </div>
             </div>
 
-        </>
+        </div>
     );
 }
 
