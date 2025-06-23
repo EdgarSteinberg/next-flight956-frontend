@@ -8,7 +8,7 @@ import { DeleteOutlined } from '@ant-design/icons';
 import { ReservaContext } from "@/context/reservaContenxt";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
-import { toast } from 'react-toastify';
+ 
 
 export default function PaqueteRead({ paquetes, setPaquetes }) {
     const {user} = useContext(ReservaContext);
