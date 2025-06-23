@@ -16,13 +16,19 @@
     url('/img/playa.webp');
   background-repeat: no-repeat;
   background-size:
-    cover,      /* para el primer gradiente */
-    cover,      /* para el segundo gradiente */
-    cover;      /* para la imagen de fondo */
+    cover,
+    /* para el primer gradiente */
+    cover,
+    /* para el segundo gradiente */
+    cover;
+  /* para la imagen de fondo */
   background-position:
-    center,     /* gradiente superior */
-    center,     /* gradiente inferior */
-    center;     /* imagen de fondo */
+    center,
+    /* gradiente superior */
+    center,
+    /* gradiente inferior */
+    center;
+  /* imagen de fondo */
 
   padding: 2rem;
   border-radius: 12px;
@@ -118,9 +124,50 @@
   font-family: 'Poppins', sans-serif;
 }
 
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  height: 30%;
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  
+ 
+}
+
+.imageSection {
+  position: relative;
+  overflow: hidden;
+  width: 60%;
+  min-height: 300px;
+}
+
+.textSection {
+  width: 100%;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+@media (max-width: 900px) {
+  .flexContainer {
+    flex-direction: column;
+  }
+
+  .imageSection,
+  .textSection {
+    width: 100%;
+  }
+}
+
+ 
+
 @media screen and (max-width: 520px) {
 
-  .formStyle, .autocompleteWrapper {
+  .formStyle,
+  .autocompleteWrapper {
     padding: 0%;
   }
 

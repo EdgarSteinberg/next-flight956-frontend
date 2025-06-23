@@ -54,7 +54,7 @@ export default function HotelesDetalle() {
         fetch(`https://node-flight956-backend.onrender.com/api/hoteles/${id}`)
             .then(response => response.json())
             .then(json => {
- 
+
                 setHotel(json.payload)
             })
             .catch(error => setError(error))
@@ -107,13 +107,12 @@ export default function HotelesDetalle() {
 
     return (
         <div style={{ width: '95%', margin: '0 auto' }}>
-            <Row gutter={[20, 20]} >
+            <Row gutter={[20, 20]}>
                 {hotel && (
                     <Col xs={24} md={24}>
-                        <Card className={styles.poppins} >
-                            <div style={{ display: 'flex', flexDirection: 'row', height: '30%' }}  >
-
-                                <div style={{ flex: '1', position: 'relative', overflow: 'hidden' }} >
+                        <Card className={styles.poppins}>
+                            <div className={styles.flexContainer}>
+                                <div className={styles.imageSection}>
                                     {hotel.image && hotel.image.length > 0 ? (
                                         <Image
                                             src={`https://node-flight956-backend.onrender.com/image/hoteles/${hotel.image[0]}`}
@@ -121,7 +120,7 @@ export default function HotelesDetalle() {
                                             style={{ objectFit: 'cover', borderRadius: '9px' }}
                                             priority
                                             fill
-                                            sizes="(max-width: 768px) 100vw, 50vw" // Aquí agregamos el sizes
+                                            sizes="(max-width: 900px) 100vw, 50vw"
                                         />
                                     ) : (
                                         <div style={{ height: '100%', background: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -130,31 +129,36 @@ export default function HotelesDetalle() {
                                     )}
                                 </div>
 
-                                <div style={{ flex: '1.2', padding: '16px', overflowY: 'auto' }}  >
+                                <div className={styles.textSection}>
                                     <p style={{ fontSize: '24px' }} className={styles.no_margin}>
                                         {'⭐'.repeat(hotel.stars)}
                                     </p>
-                                    <p style={{ fontSize: '32px', fontWeight: 'bold' }} >  {obtenerNombreDecorado(hotel)}</p>
+                                    <p style={{ fontSize: '32px', fontWeight: 'bold' }}>{obtenerNombreDecorado(hotel)}</p>
                                     <p><FaMapMarkerAlt style={{ color: 'black', fontSize: '24px' }} /> Ubicación: {hotel.name} - {hotel.location.country}</p>
                                     <p><FaParking style={{ color: 'black', fontSize: '24px' }} /> Parking gratuito, privado, en el alojamiento</p>
                                     <p><FaWifi style={{ color: 'black', fontSize: '24px' }} /> WiFi Gratis</p>
                                     <p><FaUtensils style={{ color: 'black', fontSize: '24px' }} /> Zona de cocina, cafetera, nevera</p>
                                     <p><FaEye style={{ color: 'black', fontSize: '24px' }} /> Vistas: Balcón</p>
-                                    <button style={{ cursor: 'pointer', padding: '7px', width: '30%', borderRadius: '16px', fontSize: '16px', marginTop: '14px', background: '#4285F4', color: 'white', fontWeight: 'bold' }}
-                                        onClick={handleReserva}
-                                    >
+                                    <button style={{
+                                        cursor: 'pointer',
+                                        padding: '7px',
+                                        width: '30%',
+                                        borderRadius: '16px',
+                                        fontSize: '16px',
+                                        marginTop: '14px',
+                                        background: '#4285F4',
+                                        color: 'white',
+                                        fontWeight: 'bold'
+                                    }} onClick={handleReserva}>
                                         Reservar
                                     </button>
                                 </div>
-
                             </div>
-
-
                         </Card>
                     </Col>
                 )}
             </Row>
         </div>
+
     )
 }
-
