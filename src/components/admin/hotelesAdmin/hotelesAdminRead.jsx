@@ -8,7 +8,7 @@ import { ReservaContext } from '@/context/reservaContenxt';
 import { useRouter } from 'next/navigation';
 import style from './styles.module.css';
 import { useContext } from 'react';
-import { toast } from 'react-toastify';
+
 
 
 export default function HotelRead({ hoteles, setHoteles }) {
